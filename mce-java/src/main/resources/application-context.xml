@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    <context:annotation-config/>
+    <context:component-scan base-package="com.studio.records"/>
+
+    <!--<bean id="Vinyl5" class="lt.akademija.Product">-->
+        <!--<property name="title" value="Vinyl5"/>-->
+        <!--<property name="image" value="/img/pav.jpg"/>-->
+        <!--<property name="description" value="desc1"/>-->
+        <!--<property name="price" value="45.0"/>-->
+        <!--<property name="quantity" value="5"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="Vinyl10" class="lt.akademija.Product">-->
+        <!--<property name="title" value="Vinyl10"/>-->
+        <!--<property name="image" value="/img/pav.jpg"/>-->
+        <!--<property name="description" value="desc2"/>-->
+        <!--<property name="price" value="35.0"/>-->
+        <!--<property name="quantity" value="3"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="Vinyl3" class="lt.itmokymai.spring.Product">-->
+        <!--<property name="title" value="Vinyl2"/>-->
+        <!--<property name="image" value="/img/pav.jpg"/>-->
+        <!--<property name="description" value="desc3"/>-->
+        <!--<property name="price" value="15"/>-->
+        <!--<property name="quantity" value="8"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="Vinyl4" class="lt.itmokymai.spring.Product">-->
+        <!--<property name="title" value="Vinyl3"/>-->
+        <!--<property name="image" value="/img/pav.jpg"/>-->
+        <!--<property name="description" value="desc4"/>-->
+        <!--<property name="price" value="20"/>-->
+        <!--<property name="quantity" value="4"/>-->
+    <!--</bean>-->
+
+</beans>
