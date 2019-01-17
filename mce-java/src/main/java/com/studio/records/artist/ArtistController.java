@@ -33,34 +33,34 @@ public class ArtistController {
     public ArtistRestResp getArtist(@ApiParam(value="Artist pseudonym", required=true)
                                     @Valid
                                     @PathVariable String pseudonym) {
-        return artistService.findStudioByStudioTitle()studioService.findStudioByStudioTitle(studioTitle);
+        return artistService.findArtistByPseudonym(pseudonym);
 
     }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    @ApiOperation(value="Create studio", notes="Creates new studio")
-    public void createStudio(@ApiParam(value="studio data", required=true)
+    @ApiOperation(value="Create artist", notes="Creates new artist")
+    public void createArtist(@ApiParam(value="artist data", required=true)
                              @Valid
-                             @RequestBody final CreateStudioComm p) {
-        studioService.createStudio(p.getStudioTitle(), p.getLogo(), p.getCategory(), p.getSize());
+                             @RequestBody final CreateArtistComm p) {
+        artistService.addArtist(p.getPseudonyme(), p.getFirstName(), p.getSurname(), p.getGenre(), p.getCountry(), p.getPhoto());
     }
 
-    @RequestMapping(path="/{studioTitle}",method = RequestMethod.PUT)
+    @RequestMapping(path="/{pseudonym}",method = RequestMethod.PUT)
     @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value="Edit studio",notes="Change studio data")
-    public void updateStudio(
-            @ApiParam(value="Studio title",required=true)
+    @ApiOperation(value="Edit pseudonym",notes="Change artist data")
+    public void updateArtist(
+            @ApiParam(value="Pseudonym",required=true)
             @Valid
             @PathVariable final String title,
-            @ApiParam(value="Studio data",required=true)
+            @ApiParam(value="Artist data",required=true)
             @Valid
-            @RequestBody final CreateStudioComm p) {
+            @RequestBody final CreateArtistComm p) {
 
-        studioService.updateStudio(title, p.getStudioTitle(), p.getLogo(), p.getCategory(), p.getSize());
+        artistService.updateArtist();
     }
 
-    @RequestMapping(path = "/{studioTitle}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/{pseudonym}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @ApiOperation(value="Delete studio", notes="Deletes certain studio")
     public void deleteStudio(@ApiParam(value="Studio title", required=true)
