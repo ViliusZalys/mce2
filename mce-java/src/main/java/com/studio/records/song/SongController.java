@@ -2,7 +2,6 @@ package com.studio.records.song;
 
 import com.studio.records.studio.CreateStudioComm;
 import com.studio.records.studio.StudioRestResp;
-import com.studio.records.studio.StudioService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -21,56 +20,44 @@ public class SongController {
     private final SongService songService;
 
     @Autowired
-    public StudioController(StudioService studioService) {
-        this.studioService = studioService;
+    public SongController(SongService songService) {
+        this.songService = songService;
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    @ApiOperation(value="Get studios", notes="Returns all studios")
-    public List<StudioRestResp> getAllStudios() {
-        return studioService.getAllStudios();
+    @ApiOperation(value="Get songs", notes="Returns all songs")
+    public List<SongRestResp> getAllSongs() {
+        return songService.getAllSongs();
     }
 
-    @RequestMapping(path="/{studioTitle}",method = RequestMethod.GET)
-    @ApiOperation(value="Get studio", notes="Returns one studio")
-    public StudioRestResp getStudio(@ApiParam(value="Studio title", required=true)
+    @RequestMapping(path="/{songTitle}",method = RequestMethod.GET)
+    @ApiOperation(value="Get song", notes="Returns one certain song")
+    public SongRestResp getSong(@ApiParam(value="Song title", required=true)
                                     @Valid
-                                    @PathVariable String studioTitle) {
-        return studioService.findStudioByStudioTitle(studioTitle);
+                                    @PathVariable String songTitle) {
+        return songService.findSongBySongTitle(songTitle);
 
     }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.CREATED)
-    @ApiOperation(value="Create studio", notes="Creates new studio")
-    public void createStudio(@ApiParam(value="studio data", required=true)
+    @ApiOperation(value="Create song", notes="Creates new songs")
+    public void createSong(@ApiParam(value="song data", required=true)
                              @Valid
-                             @RequestBody final CreateStudioComm p) {
-        studioService.createStudio(p.getStudioTitle(), p.getLogo(), p.getCategory(), p.getSize());
+                             @RequestBody final CreateSongComm p) {
+        songService.createSong(p.getSongTitle(), p.getAlbum(), p.getLength(), p.getMp3file());
     }
 
-    @RequestMapping(path="/{studioTitle}",method = RequestMethod.PUT)
-    @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value="Edit studio",notes="Change studio data")
-    public void updateStudio(
-            @ApiParam(value="Studio title",required=true)
-            @Valid
-            @PathVariable final String title,
-            @ApiParam(value="Studio data",required=true)
-            @Valid
-            @RequestBody final CreateStudioComm p) {
 
-        studioService.updateStudio(title, p.getStudioTitle(), p.getLogo(), p.getCategory(), p.getSize());
-    }
 
-    @RequestMapping(path = "/{studioTitle}", method = RequestMethod.DELETE)
+    @RequestMapping(path = "/{songTitle}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @ApiOperation(value="Delete studio", notes="Deletes certain studio")
-    public void deleteStudio(@ApiParam(value="Studio title", required=true)
+    @ApiOperation(value="Delete song", notes="Deletes certain song")
+    public void deleteSong(@ApiParam(value="Song title", required=true)
                              @Valid
-                             @PathVariable final String studioTitle) {
+                             @PathVariable final String songTitle) {
 
-        studioService.deleteStudio(studioTitle);
+        songService.deleteSong(songTitle);
 
     }
 }

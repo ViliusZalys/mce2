@@ -1,4 +1,4 @@
-package it.akademija;
+package com.studio.records;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -31,13 +31,13 @@ public class App extends SpringBootServletInitializer {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("it.akademija"))
+                .apis(RequestHandlerSelectors.basePackage("com.studio.records"))
                 .build();
     }
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("IT Akademija REST Documentation")
+                .title("Record studios REST Documentation")
                 .version("0.0.1-SNAPSHOT")
                 .build();
     }

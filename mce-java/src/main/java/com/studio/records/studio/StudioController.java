@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping(value = "/api/studios")
 public class StudioController {
 
-    private final StudioService studioService;;
+    private final StudioService studioService;
 
     @Autowired
     public StudioController(StudioService studioService) {

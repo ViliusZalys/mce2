@@ -1,8 +1,5 @@
 package com.studio.records.song;
 
-import com.studio.records.studio.Studio;
-import com.studio.records.studio.StudioRepository;
-import com.studio.records.studio.StudioRestResp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,53 +19,45 @@ public class SongService {
         return songRepository.findAll().stream().map(
                 (song) ->
                         new SongRestResp(
-                                studio.getTitle(),
-                                studio.getLogo(),
-                                studio.getCategory(),
-                                studio.getSize()))
+                                song.getSongTitle(),
+                                song.getAlbum(),
+                                song.getLength(),
+                                song.getMp3file()))
 
                 .collect(Collectors.toList());
 
     }
 
     @Transactional
-    public StudioRestResp findStudioByStudioTitle(String studioTitle) {
-        Studio studio = studioRepository.findStudioByStudioTitle(studioTitle);
-        return new StudioRestResp(studio.getTitle(),
-                studio.getLogo(),
-                studio.getCategory(),
-                studio.getSize());
+    public SongRestResp findSongBySongTitle(String songTitle) {
+        Song song = songRepository.findSongBySongTitle(songTitle);
+        return new SongRestResp(song.getSongTitle(),
+                song.getAlbum(),
+                song.getLength(),
+                song.getMp3file());
     }
 
     @Transactional
-    public void createStudio(String studioTitle,String logo, String category, String size) {
-        Studio studio = new Studio(studioTitle,logo, category, size);
+    public void createSong(String songTitle,String album, long length, String mp3file) {
+        Song song = new Song(songTitle, album, length, mp3file);
 
-        studioRepository.save(studio);
-    }
-
-
-    @Transactional
-    public void deleteStudio(String studioTitle) {
-        studioRepository.deleteStudioByStudioTitle(studioTitle);
-    }
-
-    public StudioRepository getStudioRepository() {
-        return studioRepository;
-    }
-
-    public void setStudioRepository(StudioRepository studioRepository) {
-        this.studioRepository = studioRepository;
+        songRepository.save(song);
     }
 
 
     @Transactional
-    public void updateStudio(String newTitle, String studioTitle, String logo, String category, String size) {
-        Studio studioUpdate = studioRepository.findStudioByStudioTitle(newTitle);
-        studioUpdate.setTitle(studioTitle);
-        studioUpdate.setLogo(logo);
-        studioUpdate.setCategory(category);
-        studioUpdate.setSize(size);
-        studioRepository.save(studioUpdate);
+    public void deleteSong(String songTitle) {
+        songRepository.deleteSongBySongTitle(songTitle);
     }
+
+    public SongRepository getSongRepository() {
+        return songRepository;
+    }
+
+    public void setSongRepository(SongRepository songRepository) {
+        this.songRepository = songRepository;
+    }
+
+
+
 }

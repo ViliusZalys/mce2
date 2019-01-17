@@ -9,13 +9,21 @@
     <context:annotation-config/>
     <context:component-scan base-package="com.studio.records"/>
 
-    <!--<bean id="Vinyl5" class="lt.akademija.Product">-->
-        <!--<property name="title" value="Vinyl5"/>-->
-        <!--<property name="image" value="/img/pav.jpg"/>-->
-        <!--<property name="description" value="desc1"/>-->
-        <!--<property name="price" value="45.0"/>-->
-        <!--<property name="quantity" value="5"/>-->
-    <!--</bean>-->
+    <bean id="34" class="com.studio.records.song.Song">
+        <property name="songTitle" value="My Generation"/>
+        <property name="album" value="My Generation"/>
+        <property name="length" value="140"/>
+        <property name="mp3file" value="/songs/myg.mp3"/>
+
+    </bean>
+
+    <bean id="44" class="com.studio.records.song.Song">
+        <property name="songTitle" value="Baba ORiley"/>
+        <property name="album" value="Whos Next"/>
+        <property name="length" value="245"/>
+        <property name="mp3file" value="/songs/baba.mp3"/>
+
+    </bean>
 
     <!--<bean id="Vinyl10" class="lt.akademija.Product">-->
         <!--<property name="title" value="Vinyl10"/>-->
