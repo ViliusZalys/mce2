@@ -45,30 +45,29 @@ public class ArtistService {
     }
 
     @Transactional
-    public void createStudio(String studioTitle,String logo, String category, String size) {
-        Studio studio = new Studio(studioTitle,logo, category, size);
+    public void addArtist(String pseudonyme, String firstName, String surname, String genre, String country, String dateOfBirth, String photo) {
 
-        studioRepository.save(studio);
+        artistRepository.save(artist);
     }
 
 
     @Transactional
-    public void deleteStudio(String studioTitle) {
-        studioRepository.deleteStudioByStudioTitle(studioTitle);
+    public void deleteArtist(String pseudonym) {
+        artistRepository.deleteArtistByPseudonym(pseudonym);
     }
 
-    public StudioRepository getStudioRepository() {
-        return studioRepository;
+    public ArtistRepository getArtistRepository() {
+        return artistRepository;
     }
 
-    public void setStudioRepository(StudioRepository studioRepository) {
-        this.studioRepository = studioRepository;
+    public void setArtistRepository(ArtistRepository artistRepository) {
+        this.artistRepository = artistRepository;
     }
 
 
     @Transactional
-    public void updateStudio(String newTitle, String studioTitle, String logo, String category, String size) {
-        Studio studioUpdate = studioRepository.findStudioByStudioTitle(newTitle);
+    public void updateArtist(String newPseu, String pseudonyme, String firstName, String surname, String genre, String country, String dateOfBirth, String photo) {
+        Artist Studio studioUpdate = studioRepository.findStudioByStudioTitle(newTitle);
         studioUpdate.setTitle(studioTitle);
         studioUpdate.setLogo(logo);
         studioUpdate.setCategory(category);
